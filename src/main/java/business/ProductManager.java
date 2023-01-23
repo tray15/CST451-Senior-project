@@ -83,6 +83,11 @@ public class ProductManager implements ProductManagerInterface {
 	public List<Product> getUserOrders(User u) {
 		return this.dao.getUserOrders(u);
 	}
+
+	@Override
+	public void deleteFromCart(Product p) throws RuntimeException, SQLException {
+		this.dao.deleteFromCart(p);
+	}
 	
 	
 	

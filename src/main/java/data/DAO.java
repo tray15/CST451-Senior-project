@@ -30,16 +30,17 @@ public class DAO implements DataAccessInterface {
 	private static final String PASSWORD = "root";
 
 	//User queries
-	private static final String INSERT_USER = "INSERT INTO user (username, password) VALUES (?, ?)";
-	private static final String FIND_USER = "SELECT * FROM user WHERE username=?";
+	private static final String INSERT_USER = "INSERT INTO `user` (username, password) VALUES (?, ?)";
+	private static final String FIND_USER = "SELECT * FROM `user` WHERE username=?";
 
 	//Product queries
 	private static final String CREATE_ONE = "INSERT INTO `products` (`product_name`, `description`, `price`) VALUES (?, ?, ?)";
-	private static final String GET_ALL_PRODUCTS = "SELECT * FROM products";
+	private static final String GET_ALL_PRODUCTS = "SELECT * FROM `products`";
 	private static final String ADD_TO_CART = "INSERT INTO `cart` (`user_id`, `product_name`, `product_id`, `price`) VALUES (?, ?, ?, ?)";
-	private static final String DELETE_PRODUCT = "DELETE FROM products WHERE product_name=?";
+	private static final String DELETE_PRODUCT = "DELETE FROM `products` WHERE `product_name`=?";
 	private static final String GET_CART = "SELECT * FROM `cart` WHERE `user_id`=?";
 	private static final String GET_USER_ORDERS = "SELECT * FROM `orders` WHERE `user_id`=?";
+	private static final String DELETE_FROM_CART = "DELETE FROM `cart` WHERE `product_name`=?";
 	
 	public void register(User u) throws RuntimeException, SQLException {
 		
@@ -343,5 +344,19 @@ public class DAO implements DataAccessInterface {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public void deleteFromCart(Product p) throws RuntimeException, SQLException{
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		conn = getConnection();
+		stmt = conn.prepareStatement(DELETE_FROM_CART, Statement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, p.getProductName());
+
+		stmt.executeUpdate();
+
+		close(stmt);
+		close(conn);
 	}
 }

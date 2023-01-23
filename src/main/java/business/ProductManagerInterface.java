@@ -16,4 +16,5 @@ public interface ProductManagerInterface {
 	public float calculateTax(User u);
 	public void submitOrder(User u) throws RuntimeException, SQLException;
 	public List<Product> getUserOrders(User u) throws RuntimeException, SQLException;
+	public void deleteFromCart(Product p) throws RuntimeException, SQLException;
 }

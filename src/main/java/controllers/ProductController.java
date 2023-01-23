@@ -84,6 +84,19 @@ public class ProductController {
 		
 		return "products.xhtml";
 	}
+	public String deleteFromCart(Product p) {
+		try {
+			service.deleteFromCart(p);
+		} catch (RuntimeException e) {
+			System.out.println(e);
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(e);
+			e.printStackTrace();
+		}
+		
+		return "products.xhtml";
+	}
 	public String getUserCart() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		User u = context.getApplication().evaluateExpressionGet(context, "#{User}", User.class);
