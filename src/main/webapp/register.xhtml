@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Registration</title>
+</h:head>
+<ui:composition template="/layouts/template.xhtml">
+	<ui:define name="content">
+		<h:body>
+			<h:form>
+				<div class="form-group" id="loginregister">
+					<h3>Register here!</h3>
+					Username:
+					<h:inputText value="#{user.username}" class="form-control"></h:inputText>
+					<br /> Password:
+					<h:inputText value="#{user.password}" class="form-control"></h:inputText>
+					<br />
+					<h:messages style="color: red" />
+					<h:commandButton action="#{registerController.register()}"
+						value="Register" class="btn btn-primary"></h:commandButton>
+					<br /> Existing user? Login <a
+						href="http://localhost:8080/CST451SeniorProject/login.xhtml">here.</a>
+				</div>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

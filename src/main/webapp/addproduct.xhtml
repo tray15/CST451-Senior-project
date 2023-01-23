@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3c//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
+<head>
+<title>Add product</title>
+</head>
+<ui:composition template="/layouts/template.xhtml">
+	<ui:define name="content">
+		<body>
+			<h:form>
+				<c:if test="#{User.admin == 0 || empty User.admin}">
+					<meta http-equiv="refresh"
+						content="0; http://localhost:8080/CST451SeniorProject/index.xhtml"></meta>
+				</c:if>
+				<div class="form-group" id="loginregister">
+					<h3>Add product</h3>
+					<br /> Name:
+					<h:inputText value="#{product.productName}" class="form-control"></h:inputText>
+					<br /> Description:
+					<h:inputText value="#{product.description}" class="form-control"></h:inputText>
+					<br /> Price:
+					<h:inputText value="#{product.price}" class="form-control"></h:inputText>
+					<br />
+
+					<h:messages style="color: red;" />
+					<h:commandButton action="#{productController.addProduct(product)}"
+						value="Add Product" class="btn btn-primary"></h:commandButton>
+				</div>
+			</h:form>
+		</body>
+	</ui:define>
+</ui:composition>
+</html>

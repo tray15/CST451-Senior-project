@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3c//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
+<head>
+<title>Welcome</title>
+</head>
+<body>
+	<ui:composition template="/layouts/template.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<div class="form-group">
+					<h3>Welcome</h3>
+					<c:if test="#{empty user.username}">
+						<p>Welcome to the shop. To view the products you need to
+							login.</p>
+					</c:if>
+					<c:if test="#{not empty user.username}">
+						<p>Welcome to the shop. Click on the products link to browse
+							our inventory.</p>
+					</c:if>
+				</div>
+				<div class="form-group">
+					<p>Computers are our passion here at PC Parts Online. Browse
+						our inventory and find the parts to build the machine of your
+						dreams. All products are sold at MSRP or lower. We take our
+						passion for the hobby serious and require every user to have an
+						account in order to make a purchase, or to browse the wares.</p>
+					<p>This shop was started in order to help people get the parts
+						that they want. Due to the COVID-19 supply chain issues, many
+						people took advantage of it by purchasing the hardware at normal
+						prices, then would sell them third-party for a profit. After
+						seeing this happen for many months, we decided to open our own
+						shop to help others make the machine that they always wanted, and
+						at a fair price.</p>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
