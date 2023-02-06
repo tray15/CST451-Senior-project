@@ -72,8 +72,10 @@ public class ProductController {
 		return "products.xhtml";
 	}
 	public String deleteFromInventory(Product p) {
+		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			service.deleteFromInventory(p);
+			context.addMessage(null, new FacesMessage("The item: " + p.getProductName() + " was deleted."));
 		} catch (RuntimeException e) {
 			System.out.println(e);
 			e.printStackTrace();
@@ -83,6 +85,30 @@ public class ProductController {
 		}
 		
 		return "products.xhtml";
+	}
+	public String updateProduct() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Product p = context.getApplication().evaluateExpressionGet(context, "#{product}", Product.class);
+		System.out.println(p.getId() + p.getProductName());
+		
+		try {
+			service.updateProduct(p);
+			context.addMessage(null, new FacesMessage("The item: " + p.getProductName() + " was updated."));
+		} catch (RuntimeException e) {
+			System.out.println(e);
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(e);
+			e.printStackTrace();
+		}
+		
+		return "products.xhtml";
+	}
+	public String showUpdateForm(Product p) {
+		System.out.println("Product being edited: " + p.getId() + p.getProductName());
+		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("product", p);
+		
+		return "updateproduct.xhtml";
 	}
 	public String deleteFromCart(Product p) {
 		try {

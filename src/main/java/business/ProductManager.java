@@ -59,7 +59,7 @@ public class ProductManager implements ProductManagerInterface {
 		for (Product p : products) {
 			total += p.getPrice();
 		}
-		
+		total = (float)(total + (total*.1));
 		return total;
 	}
 
@@ -70,10 +70,10 @@ public class ProductManager implements ProductManagerInterface {
 		for (Product p : products) {
 			total += p.getPrice();
 		}
-		
-		return total/10;
+		total = total/10;
+		return total;
 	}
-
+	
 	@Override
 	public void submitOrder(User u) {
 		this.dao.submitOrder(u);
@@ -87,6 +87,11 @@ public class ProductManager implements ProductManagerInterface {
 	@Override
 	public void deleteFromCart(Product p) throws RuntimeException, SQLException {
 		this.dao.deleteFromCart(p);
+	}
+
+	@Override
+	public void updateProduct(Product p) throws RuntimeException, SQLException {
+		this.dao.updateProduct(p);
 	}
 	
 	

@@ -17,4 +17,5 @@ public interface ProductManagerInterface {
 	public void submitOrder(User u) throws RuntimeException, SQLException;
 	public List<Product> getUserOrders(User u) throws RuntimeException, SQLException;
 	public void deleteFromCart(Product p) throws RuntimeException, SQLException;
+	public void updateProduct(Product p) throws RuntimeException, SQLException;
 }

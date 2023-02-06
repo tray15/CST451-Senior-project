@@ -41,6 +41,7 @@ public class DAO implements DataAccessInterface {
 	private static final String GET_CART = "SELECT * FROM `cart` WHERE `user_id`=?";
 	private static final String GET_USER_ORDERS = "SELECT * FROM `orders` WHERE `user_id`=?";
 	private static final String DELETE_FROM_CART = "DELETE FROM `cart` WHERE `product_name`=?";
+	private static final String UPDATE_PRODUCT = "UPDATE `products` SET `product_name`=?, `description`=?, `price`=? WHERE `product_id`=?";
 	
 	public void register(User u) throws RuntimeException, SQLException {
 		
@@ -356,6 +357,25 @@ public class DAO implements DataAccessInterface {
 
 		stmt.executeUpdate();
 
+		close(stmt);
+		close(conn);
+	}
+
+	public void updateProduct(Product p) throws RuntimeException, SQLException {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		conn = getConnection();
+		
+		stmt = conn.prepareStatement(UPDATE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+		
+		stmt.setString(1, p.getProductName());
+		stmt.setString(2, p.getDescription());
+		stmt.setFloat(3, p.getPrice());
+		stmt.setInt(4, p.getId());
+		
+		stmt.executeUpdate();
+		
 		close(stmt);
 		close(conn);
 	}
