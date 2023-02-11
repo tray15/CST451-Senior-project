@@ -24,8 +24,13 @@ Finalize your purchase and ensure that products that you wish to purchase are in
 7) View orders page<br />
 <img src="https://github.com/tray15/CST451-Senior-project/blob/main/documentation/userguide/7th_step.png?raw=true"></img>
 After completing the purchase, you will be taken to your orders page where you can see what products you have purchased. This is also able to be viewed at a later time by using the navigation bar at the top.
+8) (Optional): Logout when finished with your browsing session by clicking "Logout" in the navigation bar.
 <h2>Admin guide</h2>
-
+1) Login with Admin account
+2) Click Add Product on Navigation bar to add a new product to the inventory.
+3) Click on the "Products" link in the navigation bar to update or remove a product from inventory
+4) For updating a product, click the update product button next to the product you'd like to update. A new form will show with the information on your product. Enter any changes in this form and submit the changes.
+5) For removing a product, click the "Delete from Inventory" button next to the product you'd like to remove.
 <h2>Design Diagrams</h2>
 MVC Design Diagram<br />
 <img src="https://github.com/tray15/CST451-Senior-project/blob/main/documentation/design_diagrams/mvc_design.png?raw=true"></img><br />
@@ -45,4 +50,3 @@ UI Navigation Diagram<br />
 
 Data Models<br />
 <img src="https://github.com/tray15/CST451-Senior-project/blob/main/documentation/design_diagrams/data_model_diagrams.png?raw=true"></img><br />
-<h2>Code snippets</h2>
