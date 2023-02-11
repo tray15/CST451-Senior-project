@@ -1,7 +1,7 @@
 # Senior Project - PC Part Web Shop
 
 <h2>Overview</h2>
-This project was created because I have a passion for building computer parts and I thought a web shop would be a great way to marry my enjoyment of programming with buying parts for building computers, and also being able to share that with others. The project was created utilizing the MVC design pattern and utilizes JavaEE (SE8), and runs on a Wildfly 11 server. This project also utilized an N-layer architecture to spread the operations out of each layer. If this were a larger site with a lot of traffic, the load would be able to balanced among the different tiers. They also help abstract away the code to create a more clean and readable environment.
+This project was created because I have a passion for building computer parts and I thought a web shop would be a great way to combine my enjoyment of programming with buying parts for building computers, and also being able to share that with others. The project was created utilizing the MVC design pattern and utilizes JavaEE (SE8), and runs on a Wildfly 11 server. This project also utilized an N-layer architecture to spread the operations out of each layer. If this were a larger site with a lot of traffic, the load would be able to balanced among the different tiers. They also help abstract away the code to create a more clean and readable environment.
 <h2>User guide</h2>
 1) Register:<br />
 <img src="https://github.com/tray15/CST451-Senior-project/blob/main/documentation/userguide/1st_step.png?raw=true"></img>
