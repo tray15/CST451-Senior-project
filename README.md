@@ -1,2 +1,3 @@
-# CST451 Senior project
- CST451 Senior project
+# Senior Project - PC Part Web Shop
+
+
