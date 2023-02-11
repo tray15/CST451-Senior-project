@@ -111,8 +111,11 @@ public class ProductController {
 		return "updateproduct.xhtml";
 	}
 	public String deleteFromCart(Product p) {
+		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			service.deleteFromCart(p);
+			context.addMessage(null, new FacesMessage("The item: " + p.getProductName() + " was removed from your cart."));
+
 		} catch (RuntimeException e) {
 			System.out.println(e);
 			e.printStackTrace();
@@ -121,7 +124,7 @@ public class ProductController {
 			e.printStackTrace();
 		}
 		
-		return "products.xhtml";
+		return "cart.xhtml";
 	}
 	public String getUserCart() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -161,6 +164,7 @@ public class ProductController {
 
 		try {
 			service.submitOrder(u);
+			context.addMessage(null, new FacesMessage("Order submitted!"));
 		}  catch (RuntimeException e) {
 			System.out.println(e);
 			e.printStackTrace();
@@ -169,13 +173,13 @@ public class ProductController {
 		}
 		return "orders.xhtml";
 	}
-	public float calculateCartTotal() {
+	public String calculateCartTotal() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		User u = context.getApplication().evaluateExpressionGet(context, "#{User}", User.class);
 		
 		return service.calculateCartTotal(u);
 	}
-	public float calculateTax() {
+	public String calculateTax() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		User u = context.getApplication().evaluateExpressionGet(context, "#{User}", User.class);
 		

@@ -17,6 +17,7 @@
 				</c:if>
 				<div class="form-group">
 					<h3>Products</h3>
+					<h:messages class="alert alert-success" role="alert" />
 					<h:dataTable value="#{productController.service.getUserCart(User)}"
 						var="p" class="table table-striped table-bordered">
 						<h:column>

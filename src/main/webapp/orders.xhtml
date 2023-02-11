@@ -17,6 +17,7 @@
 				</c:if>
 				<div class="form-group">
 					<h3>Order History</h3>
+					<h:messages class="alert alert-success" role="alert" />
 					<h:dataTable
 						value="#{productController.service.getUserOrders(User)}" var="p"
 						class="table table-striped table-bordered">

@@ -137,6 +137,7 @@ public class DAO implements DataAccessInterface {
 			PreparedStatement stmt = conn.prepareStatement(CREATE_ONE, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, p.getProductName());
 			stmt.setString(2, p.getDescription());
+			stmt.setFloat(3, p.getPrice());
 			
 			stmt.executeUpdate();
 			System.out.println("Executing query for create... ");

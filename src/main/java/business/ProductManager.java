@@ -1,6 +1,7 @@
 package business;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -21,6 +22,7 @@ public class ProductManager implements ProductManagerInterface {
 	@Inject
 	DAO dao;
 	
+	private static final DecimalFormat decformat = new DecimalFormat("0.00");
 	public ProductManager() {
 		this.dao = new DAO();
 	}
@@ -53,25 +55,27 @@ public class ProductManager implements ProductManagerInterface {
 	
 
 	@Override
-	public float calculateCartTotal(User u) {
+	public String calculateCartTotal(User u) {
 		float total = 0.0f;
 		List<Product> products = this.dao.getUserCart(u);
 		for (Product p : products) {
 			total += p.getPrice();
 		}
 		total = (float)(total + (total*.1));
-		return total;
+
+		return decformat.format(total);
 	}
 
 	@Override
-	public float calculateTax(User u) {
+	public String calculateTax(User u) {
 		float total = 0.0f;
 		List<Product> products = this.dao.getUserCart(u);
 		for (Product p : products) {
 			total += p.getPrice();
 		}
 		total = total/10;
-		return total;
+		
+		return decformat.format(total);
 	}
 	
 	@Override
